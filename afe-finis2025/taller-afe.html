@@ -126,11 +126,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>               sjPlot,</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>               psy, <span class="co"># scree plot function</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>               nFactors, <span class="co"># parallel</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>               GPArotation, <span class="co"># Rotación</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>               sjlabelled)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>) <span class="co"># para desactivar notacion cientifica</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>()) <span class="co"># para limpiar el entorno de trabajo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>               sjlabelled)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>) <span class="co"># para desactivar notacion cientifica</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>()) <span class="co"># para limpiar el entorno de trabajo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="cargar-base-de-datos" class="level3">
 <h3 class="anchored" data-anchor-id="cargar-base-de-datos">Cargar base de datos</h3>
@@ -549,9 +548,12 @@ $df
 <li>ejes principales</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>fac_pa <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">select</span>(conf_gob<span class="sc">:</span>conf_pres) <span class="sc">%&gt;%</span> <span class="fu">fa</span>(<span class="at">nfactors =</span> <span class="dv">3</span>, <span class="at">fm=</span> <span class="st">"pa"</span>)</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co">#summary(fac_pa)</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>fac_pa</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>fac_pa <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">select</span>(conf_gob<span class="sc">:</span>conf_pres) <span class="sc">%&gt;%</span> <span class="fu">fa</span>(<span class="at">nfactors =</span> <span class="dv">3</span>, <span class="at">fm=</span> <span class="st">"pa"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required namespace: GPArotation</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#summary(fac_pa)</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>fac_pa</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Factor Analysis using method =  pa
 Call: fa(r = ., nfactors = 3, fm = "pa")
@@ -606,8 +608,8 @@ Minimum correlation of possible factor scores     0.72 0.43 0.25</code></pre>
 </ul>
 <p>Maximiza la posibilidad de que los parámetros reproduzcan los datos observados</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>fac_ml <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">select</span>(conf_gob<span class="sc">:</span>conf_pres) <span class="sc">%&gt;%</span> <span class="fu">fa</span>(<span class="at">nfactors =</span> <span class="dv">3</span>, <span class="at">fm=</span> <span class="st">"ml"</span>)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>fac_ml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>fac_ml <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">select</span>(conf_gob<span class="sc">:</span>conf_pres) <span class="sc">%&gt;%</span> <span class="fu">fa</span>(<span class="at">nfactors =</span> <span class="dv">3</span>, <span class="at">fm=</span> <span class="st">"ml"</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>fac_ml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Factor Analysis using method =  ml
 Call: fa(r = ., nfactors = 3, fm = "ml")
@@ -658,117 +660,10 @@ Minimum correlation of possible factor scores     0.72 0.45 0.34</code></pre>
 </div>
 </div>
 </section>
-<section id="rotación" class="level3">
-<h3 class="anchored" data-anchor-id="rotación">Rotación</h3>
-<ul>
-<li>Varimax (ortogonal)</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>fac_ml_var <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">select</span>(conf_gob<span class="sc">:</span>conf_pres) <span class="sc">%&gt;%</span> <span class="fu">fa</span>(<span class="at">nfactors =</span> <span class="dv">3</span>, <span class="at">fm=</span> <span class="st">"ml"</span>, <span class="at">rotate=</span><span class="st">"varimax"</span>) <span class="co"># ortogonal</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>fac_ml_var</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Factor Analysis using method =  ml
-Call: fa(r = ., nfactors = 3, rotate = "varimax", fm = "ml")
-Standardized loadings (pattern matrix) based upon correlation matrix
-            ML1  ML2  ML3   h2   u2 com
-conf_gob   0.76 0.32 0.17 0.72 0.28 1.4
-conf_part  0.21 0.74 0.22 0.64 0.36 1.3
-conf_carab 0.57 0.05 0.31 0.43 0.57 1.6
-conf_sind  0.04 0.23 0.46 0.27 0.73 1.5
-conf_empre 0.35 0.11 0.63 0.53 0.47 1.6
-conf_cong  0.34 0.48 0.42 0.52 0.48 2.8
-conf_pres  0.83 0.22 0.10 0.75 0.25 1.2
-
-                       ML1  ML2  ML3
-SS loadings           1.89 1.00 0.97
-Proportion Var        0.27 0.14 0.14
-Cumulative Var        0.27 0.41 0.55
-Proportion Explained  0.49 0.26 0.25
-Cumulative Proportion 0.49 0.75 1.00
-
-Mean item complexity =  1.6
-Test of the hypothesis that 3 factors are sufficient.
-
-df null model =  21  with the objective function =  2.3 with Chi Square =  7858.1
-df of  the model are 3  and the objective function was  0.01 
-
-The root mean square of the residuals (RMSR) is  0.01 
-The df corrected root mean square of the residuals is  0.03 
-
-The harmonic n.obs is  3337 with the empirical chi square  14.35  with prob &lt;  0.0025 
-The total n.obs was  3417  with Likelihood Chi Square =  35.46  with prob &lt;  0.000000097 
-
-Tucker Lewis Index of factoring reliability =  0.971
-RMSEA index =  0.056  and the 90 % confidence intervals are  0.041 0.074
-BIC =  11.05
-Fit based upon off diagonal values = 1
-Measures of factor score adequacy             
-                                                   ML1  ML2  ML3
-Correlation of (regression) scores with factors   0.89 0.78 0.73
-Multiple R square of scores with factors          0.79 0.61 0.54
-Minimum correlation of possible factor scores     0.59 0.21 0.07</code></pre>
-</div>
-</div>
-<ul>
-<li>Promax (oblicua)</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>fac_ml_pro <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">select</span>(conf_gob<span class="sc">:</span>conf_pres) <span class="sc">%&gt;%</span> <span class="fu">fa</span>(<span class="at">nfactors =</span> <span class="dv">3</span>, <span class="at">fm=</span> <span class="st">"ml"</span>, <span class="at">rotate=</span><span class="st">"promax"</span>)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>fac_ml_pro</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Factor Analysis using method =  ml
-Call: fa(r = ., nfactors = 3, rotate = "promax", fm = "ml")
-Standardized loadings (pattern matrix) based upon correlation matrix
-             ML1   ML2   ML3   h2   u2 com
-conf_gob    0.80  0.19 -0.09 0.72 0.28 1.1
-conf_part   0.03  0.78  0.01 0.64 0.36 1.0
-conf_carab  0.57 -0.14  0.23 0.43 0.57 1.4
-conf_sind  -0.15  0.13  0.51 0.27 0.73 1.3
-conf_empre  0.19 -0.12  0.67 0.53 0.47 1.2
-conf_cong   0.17  0.39  0.30 0.52 0.48 2.3
-conf_pres   0.91  0.07 -0.16 0.75 0.25 1.1
-
-                       ML1  ML2  ML3
-SS loadings           1.98 0.96 0.92
-Proportion Var        0.28 0.14 0.13
-Cumulative Var        0.28 0.42 0.55
-Proportion Explained  0.51 0.25 0.24
-Cumulative Proportion 0.51 0.76 1.00
-
- With factor correlations of 
-     ML1  ML2  ML3
-ML1 1.00 0.48 0.57
-ML2 0.48 1.00 0.56
-ML3 0.57 0.56 1.00
-
-Mean item complexity =  1.4
-Test of the hypothesis that 3 factors are sufficient.
-
-df null model =  21  with the objective function =  2.3 with Chi Square =  7858.1
-df of  the model are 3  and the objective function was  0.01 
-
-The root mean square of the residuals (RMSR) is  0.01 
-The df corrected root mean square of the residuals is  0.03 
-
-The harmonic n.obs is  3337 with the empirical chi square  14.35  with prob &lt;  0.0025 
-The total n.obs was  3417  with Likelihood Chi Square =  35.46  with prob &lt;  0.000000097 
-
-Tucker Lewis Index of factoring reliability =  0.971
-RMSEA index =  0.056  and the 90 % confidence intervals are  0.041 0.074
-BIC =  11.05
-Fit based upon off diagonal values = 1
-Measures of factor score adequacy             
-                                                   ML1  ML2  ML3
-Correlation of (regression) scores with factors   0.93 0.85 0.83
-Multiple R square of scores with factors          0.87 0.72 0.69
-Minimum correlation of possible factor scores     0.74 0.45 0.38</code></pre>
-</div>
-</div>
-</section>
 <section id="casi-automático-con-sjplot" class="level3">
 <h3 class="anchored" data-anchor-id="casi-automático-con-sjplot">Casi automático con sjPlot</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> <span class="fu">select</span>(conf_gob<span class="sc">:</span>conf_pres) <span class="sc">%&gt;%</span> sjPlot<span class="sc">::</span><span class="fu">tab_fa</span>(<span class="at">method =</span> <span class="st">"ml"</span>, <span class="at">rotation =</span> <span class="st">"promax"</span>, <span class="at">show.comm =</span> <span class="cn">TRUE</span>, <span class="at">title =</span> <span class="st">"Análisis factorial de confianza en instituciones"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> <span class="fu">select</span>(conf_gob<span class="sc">:</span>conf_pres) <span class="sc">%&gt;%</span> sjPlot<span class="sc">::</span><span class="fu">tab_fa</span>(<span class="at">method =</span> <span class="st">"ml"</span>, <span class="at">rotation =</span> <span class="st">"promax"</span>, <span class="at">show.comm =</span> <span class="cn">TRUE</span>, <span class="at">title =</span> <span class="st">"Análisis factorial de confianza en instituciones"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Parallel analysis suggests that the number of factors =  3  and the number of components =  NA </code></pre>
 </div>
@@ -863,8 +758,8 @@ la Republica</td>
 <section id="puntajes-factoriales" class="level3">
 <h3 class="anchored" data-anchor-id="puntajes-factoriales">Puntajes factoriales</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>fac_ml <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">select</span>(conf_gob<span class="sc">:</span>conf_pres) <span class="sc">%&gt;%</span> <span class="fu">fa</span>(<span class="at">nfactors =</span> <span class="dv">3</span>, <span class="at">fm=</span> <span class="st">"ml"</span>, <span class="at">rotate =</span> <span class="st">"promax"</span>, <span class="at">scores =</span> <span class="st">"regression"</span>)</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>fac_ml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>fac_ml <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">select</span>(conf_gob<span class="sc">:</span>conf_pres) <span class="sc">%&gt;%</span> <span class="fu">fa</span>(<span class="at">nfactors =</span> <span class="dv">3</span>, <span class="at">fm=</span> <span class="st">"ml"</span>, <span class="at">rotate =</span> <span class="st">"promax"</span>, <span class="at">scores =</span> <span class="st">"regression"</span>)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>fac_ml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Factor Analysis using method =  ml
 Call: fa(r = ., nfactors = 3, rotate = "promax", scores = "regression", 
@@ -916,10 +811,10 @@ Minimum correlation of possible factor scores     0.74 0.45 0.38</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">cbind</span>(data, fac_ml<span class="sc">$</span>scores)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">cbind</span>(data, fac_ml<span class="sc">$</span>scores)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> <span class="fu">select</span>(conf_inst, ML1, ML2, ML3) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> <span class="fu">select</span>(conf_inst, ML1, ML2, ML3) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   conf_inst        ML1        ML2        ML3
 1   1.000000 -0.8382387 -0.4724225 -0.7851196
@@ -936,7 +831,7 @@ Minimum correlation of possible factor scores     0.74 0.45 0.38</code></pre>
 </div>
 <p>Factor 1</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data<span class="sc">$</span>ML1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data<span class="sc">$</span>ML1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    Min.  1st Qu.   Median     Mean  3rd Qu.     Max.     NA's 
 -0.84894 -0.72453 -0.38400 -0.01872  0.50205  3.94763      222 </code></pre>
@@ -944,7 +839,7 @@ Minimum correlation of possible factor scores     0.74 0.45 0.38</code></pre>
 </div>
 <p>Factor 2</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data<span class="sc">$</span>ML2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data<span class="sc">$</span>ML2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    Min.  1st Qu.   Median     Mean  3rd Qu.     Max.     NA's 
 -0.75098 -0.54809 -0.40290 -0.00971  0.16165  5.39270      222 </code></pre>
@@ -952,7 +847,7 @@ Minimum correlation of possible factor scores     0.74 0.45 0.38</code></pre>
 </div>
 <p>Factor 3</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data<span class="sc">$</span>ML3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data<span class="sc">$</span>ML3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
 -1.1852 -0.7486 -0.1423 -0.0131  0.5225  3.7504     222 </code></pre>
@@ -962,22 +857,22 @@ Minimum correlation of possible factor scores     0.74 0.45 0.38</code></pre>
 <section id="renombramos-los-factores-para-darle-más-sentido-a-la-interpretación" class="level3">
 <h3 class="anchored" data-anchor-id="renombramos-los-factores-para-darle-más-sentido-a-la-interpretación">Renombramos los factores para darle más sentido a la interpretación</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">inst_ejecutivo=</span>ML1,</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">inst_partidos=</span>ML2,</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">inst_trabajo=</span>ML3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">inst_ejecutivo=</span>ML1,</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">inst_partidos=</span>ML2,</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">inst_trabajo=</span>ML3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="ahora-probar-cada-uno-de-estos-puntajes-en-un-modelo-de-regresión" class="level3">
 <h3 class="anchored" data-anchor-id="ahora-probar-cada-uno-de-estos-puntajes-en-un-modelo-de-regresión">Ahora probar cada uno de estos puntajes en un modelo de regresión</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span><span class="fu">na.omit</span>(data)</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>reg1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(satis_dem<span class="sc">~</span>conf_inst, <span class="at">data=</span>data)</span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>reg2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(satis_dem<span class="sc">~</span>inst_ejecutivo, <span class="at">data=</span>data)</span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>reg3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(satis_dem<span class="sc">~</span>inst_partidos, <span class="at">data=</span>data)</span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>reg4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(satis_dem<span class="sc">~</span>inst_trabajo, <span class="at">data=</span>data)</span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>reg5 <span class="ot">&lt;-</span> <span class="fu">lm</span>(satis_dem<span class="sc">~</span>inst_ejecutivo<span class="sc">+</span>inst_partidos<span class="sc">+</span>inst_trabajo, <span class="at">data=</span>data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span><span class="fu">na.omit</span>(data)</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>reg1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(satis_dem<span class="sc">~</span>conf_inst, <span class="at">data=</span>data)</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>reg2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(satis_dem<span class="sc">~</span>inst_ejecutivo, <span class="at">data=</span>data)</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>reg3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(satis_dem<span class="sc">~</span>inst_partidos, <span class="at">data=</span>data)</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>reg4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(satis_dem<span class="sc">~</span>inst_trabajo, <span class="at">data=</span>data)</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>reg5 <span class="ot">&lt;-</span> <span class="fu">lm</span>(satis_dem<span class="sc">~</span>inst_ejecutivo<span class="sc">+</span>inst_partidos<span class="sc">+</span>inst_trabajo, <span class="at">data=</span>data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>texreg<span class="sc">::</span><span class="fu">knitreg</span>(<span class="fu">list</span>(reg1, reg2, reg3, reg4, reg5))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>texreg<span class="sc">::</span><span class="fu">knitreg</span>(<span class="fu">list</span>(reg1, reg2, reg3, reg4, reg5))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="texreg" style="margin: 10px auto;border-collapse: collapse;border-spacing: 0px;caption-side: bottom;color: #000000;border-top: 2px solid #000000;">
 <caption>
 Statistical models
